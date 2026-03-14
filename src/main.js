@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 // 📄 DATA FROM PDF
 // ============================================
 
-// IT Services Trends (2025)
+// IT Services Trends (2025) - From PDF Page 03
 const IT_TRENDS_DATA = [
   {
     name: "AI & Automation",
@@ -38,7 +38,7 @@ const IT_TRENDS_DATA = [
   },
 ];
 
-// Backup & Recovery Trends (2025)
+// Backup & Recovery Trends (2025) - From PDF Page 03
 const BACKUP_TRENDS_DATA = [
   {
     name: "Hybrid Backup Models",
@@ -67,7 +67,7 @@ const BACKUP_TRENDS_DATA = [
   },
 ];
 
-// Services (from PDF)
+// Services - From PDF Pages 05-09
 const SERVICES = [
   {
     icon: "fa-server",
@@ -133,7 +133,7 @@ const SERVICES = [
   },
 ];
 
-// Partners (your actual logos)
+// Partners - From PDF Pages 09-10
 const PARTNERS = [
   {
     name: "Commvault",
@@ -161,7 +161,7 @@ const PARTNERS = [
   },
 ];
 
-// Customers (your actual logos - case-sensitive filenames)
+// Customers - From PDF Pages 11-12 (your actual logo files)
 const CUSTOMERS = [
   { name: "Volksara", file: "volksara" },
   { name: "Flipkart", file: "flipkart" },
@@ -331,7 +331,7 @@ class UIManager {
     this.setupModal();
     this.setupScrollProgress();
     this.setupBackToTop();
-    this.setupThemeToggle();
+    this.setupThemeToggle(); // ✅ Fixed dark mode toggle
     this.setupCounters();
     this.hideLoader();
     this.setupNavigation();
@@ -495,31 +495,67 @@ class UIManager {
 
   setupBackToTop() {
     const btn = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      btn.classList.toggle("visible", window.scrollY > 500);
-    });
-    btn.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" }),
+    if (!btn) return;
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 500) {
+          btn.classList.add("visible");
+        } else {
+          btn.classList.remove("visible");
+        }
+      },
+      { passive: true },
     );
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
+  // ✅ FIXED: Dark Mode Toggle Function
   setupThemeToggle() {
     const btn = document.getElementById("themeToggle");
-    const icon = btn.querySelector("i");
+    const icon = btn?.querySelector("i");
 
-    if (localStorage.getItem("theme") === "dark") {
+    if (!btn || !icon) return;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
+    // Apply saved theme or system preference
+    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
       document.body.classList.add("dark-mode");
-      icon.classList.replace("fa-moon", "fa-sun");
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
     }
 
+    // Toggle click handler
     btn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      icon.classList.replace(
-        isDark ? "fa-moon" : "fa-sun",
-        isDark ? "fa-sun" : "fa-moon",
+      const isDark = document.body.classList.toggle("dark-mode");
+
+      // Update icon
+      if (isDark) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+        localStorage.setItem("theme", "dark");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+        localStorage.setItem("theme", "light");
+      }
+
+      // Optional: Add subtle animation feedback
+      gsap.fromTo(
+        btn,
+        { scale: 0.9 },
+        { scale: 1, duration: 0.2, ease: "power2.out" },
       );
-      localStorage.setItem("theme", isDark ? "dark" : "light");
     });
   }
 

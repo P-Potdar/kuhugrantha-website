@@ -18,7 +18,6 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
       },
     },
-    // Increase chunk size warning limit for Three.js
     chunkSizeWarningLimit: 1000,
   },
 

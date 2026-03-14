@@ -1,32 +1,23 @@
 // ============================================
-// ✅ ALL VARIABLES DEFINED - No imports needed
+// ✅ ALL VARIABLES DEFINED
 // ============================================
-
-// Colors - Primary Palette
 $color-primary: #0f172a;
 $color-secondary: #6366f1;
 $color-accent: #14b8a6;
 $color-highlight: #f59e0b;
 $color-success: #10b981;
-$color-warning: #f59e0b;
-$color-danger: #ef4444;
-
-// Colors - Backgrounds & Text
 $color-bg: #ffffff;
 $color-bg-alt: #f8fafc;
 $color-text: #1e293b;
 $color-text-light: #64748b;
 $color-border: #e2e8f0;
 
-// Typography
 $font-main:
   "Inter",
   -apple-system,
   BlinkMacSystemFont,
   "Segoe UI",
   sans-serif;
-
-// Spacing Scale (8px base)
 $space-1: 0.25rem;
 $space-2: 0.5rem;
 $space-3: 0.75rem;
@@ -38,11 +29,8 @@ $space-10: 4rem;
 $space-12: 6rem;
 $space-16: 8rem;
 
-// Breakpoints
 $bp-tablet: 768px;
 $bp-desktop: 1024px;
-
-// Transitions
 $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // ============================================
@@ -64,6 +52,64 @@ body {
   color: $color-text;
   background: $color-bg;
   overflow-x: hidden;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+// ============================================
+// ✅ DARK MODE STYLES
+// ============================================
+body.dark-mode {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: #334155;
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  .navbar {
+    background: rgba(15, 23, 42, 0.98);
+  }
+  .logo-text {
+    color: var(--text-primary);
+  }
+  .nav-links a {
+    color: var(--text-secondary);
+  }
+  .section {
+    background: var(--bg-primary);
+  }
+
+  .service-card,
+  .stat-card,
+  .insight-card,
+  .contact-card,
+  .contact-form {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
+
+  .section-title {
+    color: var(--text-primary);
+  }
+  .section-subtitle {
+    color: var(--text-secondary);
+  }
+
+  .partners {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+  }
+  .footer {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+  }
+
+  .customer-logo {
+    background: var(--bg-secondary);
+  }
 }
 
 #webgl-canvas {
@@ -130,12 +176,11 @@ body {
 }
 
 // ============================================
-// ✅ THEME TOGGLE & BACK TO TOP
+// ✅ FLOATING TOGGLES - Back to Top LEFT, Theme RIGHT
 // ============================================
 .theme-toggle,
 .back-to-top {
   position: fixed;
-  right: 30px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -152,23 +197,33 @@ body {
   font-size: 1.2rem;
 }
 
+// Theme Toggle - RIGHT side
 .theme-toggle {
   bottom: 100px;
+  right: 30px;
+
+  &:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  }
 }
+
+// Back to Top - LEFT side (FIXED)
 .back-to-top {
   bottom: 30px;
+  left: 30px; // ← CHANGED FROM right TO left
   opacity: 0;
   visibility: hidden;
+
   &.visible {
     opacity: 1;
     visibility: visible;
   }
-}
 
-.theme-toggle:hover,
-.back-to-top:hover {
-  transform: scale(1.1) rotate(15deg);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  }
 }
 
 // ============================================
@@ -243,7 +298,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100%;
   padding: $space-4 0;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(12px);
@@ -255,16 +310,16 @@ body {
     padding: $space-3 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
   }
+}
 
-  &-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 $space-4;
-  }
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-4;
 }
 
 .logo {
@@ -292,11 +347,7 @@ body {
   &-text {
     font-size: 1.5rem;
     font-weight: 800;
-    background: linear-gradient(
-      135deg,
-      $color-secondary 0%,
-      $color-accent 100%
-    );
+    background: linear-gradient(135deg, $color-secondary, $color-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -314,7 +365,7 @@ body {
   gap: $space-6;
   list-style: none;
   align-items: center;
-  margin-left: auto; // Push to right
+  margin-left: auto;
 
   @media (max-width: $bp-tablet) {
     display: none;
@@ -1239,12 +1290,8 @@ body {
     bottom: 90px;
   }
   .back-to-top {
+    left: 20px; // Keep on left even on mobile
     bottom: 20px;
-  }
-
-  .slider-btn {
-    width: 40px;
-    height: 40px;
   }
 
   .modal-content {
