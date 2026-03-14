@@ -1,0 +1,35 @@
+// src/styles/_variables.scss
+
+// Spacing Scale (8px base)
+$spacing-1: 0.25rem; // 4px
+$spacing-2: 0.5rem; // 8px  ← This was missing!
+$spacing-3: 0.75rem; // 12px
+$spacing-4: 1rem; // 16px
+$spacing-5: 1.5rem; // 24px
+$spacing-6: 2rem; // 32px
+$spacing-8: 3rem; // 48px
+$spacing-10: 4rem; // 64px
+$spacing-12: 6rem; // 96px
+
+// Colors
+$color-primary: #2563eb;
+$color-primary-dark: #1e40af;
+$color-secondary: #0f172a;
+$color-accent: #06b6d4;
+$color-success: #10b981;
+$color-white: #ffffff;
+$color-light: #f8fafc;
+$color-gray: #64748b;
+$color-dark: #1e293b;
+
+// Typography
+$font-main: "Inter", system-ui, sans-serif;
+$font-size-h1: clamp(2.5rem, 5vw, 4rem);
+$font-size-h2: clamp(1.8rem, 4vw, 2.5rem);
+
+// Breakpoints
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+// Transitions
+$transition-normal: 300ms ease;
