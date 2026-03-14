@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "KuhuGrantha Pvt. Ltd. - IT Infrastructure, Cloud & Workforce Solutions",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -5,7 +5,11 @@ import "./styles/main.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Data from PDF
+// ============================================
+// 📄 DATA FROM PDF
+// ============================================
+
+// IT Services Trends (2025)
 const IT_TRENDS_DATA = [
   {
     name: "AI & Automation",
@@ -34,6 +38,7 @@ const IT_TRENDS_DATA = [
   },
 ];
 
+// Backup & Recovery Trends (2025)
 const BACKUP_TRENDS_DATA = [
   {
     name: "Hybrid Backup Models",
@@ -62,13 +67,14 @@ const BACKUP_TRENDS_DATA = [
   },
 ];
 
+// Services (from PDF)
 const SERVICES = [
   {
     icon: "fa-server",
     title: "IT Infrastructure Management",
     shortDesc: "End-to-end management of your IT infrastructure",
     fullDesc:
-      "We provide end-to-end management of your IT infrastructure, including server setup, network administration, system monitoring, and maintenance to ensure high availability, security, and optimal performance.",
+      "We provide end-to-end management of your IT infrastructure, including server setup, network administration, system monitoring, and maintenance to ensure high availability, security, and optimal performance. Our proactive approach minimizes downtime, maximizes efficiency, and supports your business growth with scalable, reliable technology solutions.",
     details: [
       "Server Setup & Configuration",
       "Network Administration",
@@ -83,7 +89,7 @@ const SERVICES = [
     title: "Database Managed Services",
     shortDesc: "Comprehensive database management and optimization",
     fullDesc:
-      "We offer comprehensive database management services, including installation, configuration, performance tuning, and regular maintenance to ensure data integrity, security, and high availability.",
+      "We offer comprehensive database management services, including installation, configuration, performance tuning, and regular maintenance to ensure data integrity, security, and high availability. Our proactive monitoring and continuous optimization help minimize downtime, enhance system performance, and support seamless business operations through scalable and reliable data solutions.",
     details: [
       "Database Installation & Configuration",
       "Performance Tuning",
@@ -98,7 +104,7 @@ const SERVICES = [
     title: "Backup Managed Services",
     shortDesc: "Enterprise-grade backup and disaster recovery",
     fullDesc:
-      "We offer comprehensive backup managed services that include automated backups, secure encrypted storage, disaster recovery, and regular testing to ensure data integrity and availability at all times. As a Commvault Premier Partner, we leverage industry-leading technologies to deliver proactive, scalable solutions.",
+      "We offer comprehensive backup managed services that include automated backups, secure encrypted storage, disaster recovery, and regular testing to ensure data integrity and availability at all times. As a Commvault Premier Partner, we leverage industry-leading technologies to deliver proactive, scalable solutions that minimize data loss, reduce downtime, and help your business remain resilient and compliant.",
     details: [
       "Automated Backups",
       "Encrypted Storage",
@@ -107,14 +113,14 @@ const SERVICES = [
       "Data Integrity Assurance",
       "Compliance Management",
     ],
-    partners: ["Commvault (Premier Partner)", "Veeam"],
+    partners: ["Commvault (Premier Partner)", "Veeam", "Arctera"],
   },
   {
     icon: "fa-cloud",
     title: "Cloud Managed Services",
     shortDesc: "End-to-end cloud solutions across major platforms",
     fullDesc:
-      "We deliver end-to-end cloud managed services, including deployment, monitoring, optimization, and security across leading platforms. As trusted partners, we provide enterprise-grade cloud solutions that are scalable, secure, and cost-effective.",
+      "We deliver end-to-end cloud managed services, including deployment, monitoring, optimization, and security across leading platforms such as Microsoft Azure, Amazon Web Services (AWS), and Google Cloud. As trusted partners, we provide enterprise-grade cloud solutions that are scalable, secure, and cost-effective.",
     details: [
       "Cloud Deployment & Migration",
       "24/7 Monitoring",
@@ -123,10 +129,11 @@ const SERVICES = [
       "Performance Tuning",
       "Disaster Recovery",
     ],
-    partners: ["Metallic", "Nutanix"],
+    partners: ["Microsoft Azure", "AWS", "Metallic"],
   },
 ];
 
+// Partners (your actual logos)
 const PARTNERS = [
   {
     name: "Commvault",
@@ -154,62 +161,26 @@ const PARTNERS = [
   },
 ];
 
+// Customers (your actual logos - case-sensitive filenames)
 const CUSTOMERS = [
-  "Volksara",
-  "Flipkart",
-  "KPMG",
-  "WWIL",
-  "Fortis",
-  "NTT",
-  "Kinsfolk",
-  "Endurance",
-  "Paramaah",
-  "Netweb",
-  "NxtGen",
-  "Shree Naman",
-  "Servcloud",
+  { name: "Volksara", file: "volksara" },
+  { name: "Flipkart", file: "flipkart" },
+  { name: "KPMG", file: "kpmg" },
+  { name: "Wind World", file: "wwil" },
+  { name: "Fortis", file: "fortis" },
+  { name: "NTT", file: "NTT" }, // Capital NTT for your logo file
+  { name: "Kinsfolk", file: "kinsfolk" },
+  { name: "Endurance", file: "endurance" },
+  { name: "Paramaah", file: "paramaah" },
+  { name: "Netweb", file: "netweb" },
+  { name: "NxtGen", file: "nxtgen" },
+  { name: "Shree Naman", file: "shreenaman" },
+  { name: "Servcloud", file: "servcloud" },
 ];
 
-const TESTIMONIALS = [
-  {
-    text: "KuhuGrantha transformed our IT infrastructure. Their expertise in cloud migration saved us 40% in operational costs.",
-    author: "Rajesh M.",
-    company: "TechCorp India",
-    initials: "RM",
-  },
-  {
-    text: "The talent acquisition team found us perfect candidates in record time. Their understanding of technical requirements was impressive.",
-    author: "Priya S.",
-    company: "StartupHub",
-    initials: "PS",
-  },
-  {
-    text: "Their cybersecurity audit identified critical vulnerabilities we missed. Now we sleep peacefully knowing our data is secure.",
-    author: "Amit K.",
-    company: "FinancePlus",
-    initials: "AK",
-  },
-  {
-    text: "24/7 support that actually works! Their team resolved our database issue within minutes, minimizing downtime significantly.",
-    author: "Sarah L.",
-    company: "Global Retail",
-    initials: "SL",
-  },
-  {
-    text: "Best backup solution provider. Commvault implementation was seamless and their ongoing support is exceptional.",
-    author: "Michael T.",
-    company: "DataSafe Inc",
-    initials: "MT",
-  },
-  {
-    text: "From recruitment to IT infrastructure, KuhuGrantha has been our one-stop solution. Highly recommend their services!",
-    author: "Neha P.",
-    company: "InnovateTech",
-    initials: "NP",
-  },
-];
-
-// Three.js Scene
+// ============================================
+// 🌍 THREE.JS SCENE
+// ============================================
 class Scene3D {
   constructor() {
     this.canvas = document.getElementById("webgl-canvas");
@@ -344,11 +315,12 @@ class Scene3D {
   }
 }
 
-// UI Manager
+// ============================================
+// 🎬 UI MANAGER
+// ============================================
 class UIManager {
   constructor(scene3D) {
     this.scene3D = scene3D;
-    this.currentTestimonial = 0;
     this.init();
   }
 
@@ -356,7 +328,6 @@ class UIManager {
     this.createParticles();
     this.populateContent();
     this.setupTrendInteractions();
-    this.setupTestimonialsSlider();
     this.setupModal();
     this.setupScrollProgress();
     this.setupBackToTop();
@@ -406,7 +377,7 @@ class UIManager {
       const div = document.createElement("div");
       div.className = "partner-logo";
       div.innerHTML = `
-        <a href="${partner.url}" target="_blank">
+        <a href="${partner.url}" target="_blank" rel="noopener">
           <img src="${partner.logo}" alt="${partner.name}" loading="lazy">
           ${partner.badge ? `<span class="badge">${partner.badge}</span>` : ""}
           <span>${partner.name}</span>
@@ -415,20 +386,22 @@ class UIManager {
       partnersContainer.appendChild(div);
     });
 
-    // Customers
+    // Customers (with fallback for .png/.jpeg)
     const customersContainer = document.getElementById("customers-container");
-    CUSTOMERS.forEach((name) => {
-      const fileName = name.toLowerCase().replace(/\s+/g, "");
+    CUSTOMERS.forEach((customer) => {
       const div = document.createElement("div");
       div.className = "customer-logo";
       div.innerHTML = `
-        <img src="/logos/customers/${fileName}.png" alt="${name}" loading="lazy" onerror="this.src='/logos/customers/${fileName}.jpeg'">
-        <span>${name}</span>
+        <img src="/logos/customers/${customer.file}.png" 
+             alt="${customer.name}" 
+             loading="lazy" 
+             onerror="this.onerror=null; this.src='/logos/customers/${customer.file}.jpeg'">
+        <span>${customer.name}</span>
       `;
       customersContainer.appendChild(div);
     });
 
-    // Trends
+    // IT Trends
     const itTrends = document.getElementById("it-trends");
     IT_TRENDS_DATA.forEach((trend, index) => {
       const tag = document.createElement("div");
@@ -439,6 +412,7 @@ class UIManager {
       itTrends.appendChild(tag);
     });
 
+    // Backup Trends
     const backupTrends = document.getElementById("backup-trends");
     BACKUP_TRENDS_DATA.forEach((trend, index) => {
       const tag = document.createElement("div");
@@ -450,69 +424,28 @@ class UIManager {
     });
   }
 
-  setupTestimonialsSlider() {
-    const track = document.getElementById("testimonialsTrack");
-    const dotsContainer = document.getElementById("sliderDots");
+  setupTrendInteractions() {
+    document.addEventListener("click", (e) => {
+      if (!e.target.classList.contains("trend-tag")) return;
 
-    TESTIMONIALS.forEach((testimonial, index) => {
-      const card = document.createElement("div");
-      card.className = "testimonial-card";
-      card.innerHTML = `
-        <div class="testimonial-content">
-          <p class="testimonial-text">"${testimonial.text}"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">${testimonial.initials}</div>
-            <div class="author-info">
-              <h4>${testimonial.author}</h4>
-              <span>${testimonial.company}</span>
-            </div>
-          </div>
-        </div>
-      `;
-      track.appendChild(card);
+      const type = e.target.dataset.type;
+      const index = parseInt(e.target.dataset.index);
+      const data = type === "it" ? IT_TRENDS_DATA : BACKUP_TRENDS_DATA;
+      const trend = data[index];
 
-      const dot = document.createElement("div");
-      dot.className = "dot" + (index === 0 ? " active" : "");
-      dot.addEventListener("click", () => this.goToSlide(index));
-      dotsContainer.appendChild(dot);
+      e.target
+        .closest(".trend-list")
+        .querySelectorAll(".trend-tag")
+        .forEach((t) => t.classList.remove("active"));
+      e.target.classList.add("active");
+
+      const infoDiv = document.getElementById(`${type}-trend-info`);
+      infoDiv.classList.remove("show");
+      setTimeout(() => {
+        infoDiv.innerHTML = `<h4>${trend.name}</h4><p>${trend.description}</p>`;
+        infoDiv.classList.add("show");
+      }, 200);
     });
-
-    document
-      .getElementById("sliderPrev")
-      .addEventListener("click", () => this.prevSlide());
-    document
-      .getElementById("sliderNext")
-      .addEventListener("click", () => this.nextSlide());
-    setInterval(() => this.nextSlide(), 5000);
-  }
-
-  goToSlide(index) {
-    this.currentTestimonial = index;
-    const track = document.getElementById("testimonialsTrack");
-    const dots = document.querySelectorAll(".dot");
-    const visibleCards =
-      window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
-
-    gsap.to(track, { x: -index * (100 / visibleCards) + "%", duration: 0.5 });
-    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-  }
-
-  nextSlide() {
-    const visibleCards =
-      window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
-    const maxIndex = TESTIMONIALS.length - visibleCards;
-    this.currentTestimonial =
-      this.currentTestimonial >= maxIndex ? 0 : this.currentTestimonial + 1;
-    this.goToSlide(this.currentTestimonial);
-  }
-
-  prevSlide() {
-    const visibleCards =
-      window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
-    const maxIndex = TESTIMONIALS.length - visibleCards;
-    this.currentTestimonial =
-      this.currentTestimonial <= 0 ? maxIndex : this.currentTestimonial - 1;
-    this.goToSlide(this.currentTestimonial);
   }
 
   setupModal() {
@@ -618,30 +551,6 @@ class UIManager {
     counters.forEach((counter) => observer.observe(counter));
   }
 
-  setupTrendInteractions() {
-    document.addEventListener("click", (e) => {
-      if (!e.target.classList.contains("trend-tag")) return;
-
-      const type = e.target.dataset.type;
-      const index = parseInt(e.target.dataset.index);
-      const data = type === "it" ? IT_TRENDS_DATA : BACKUP_TRENDS_DATA;
-      const trend = data[index];
-
-      e.target
-        .closest(".trend-list")
-        .querySelectorAll(".trend-tag")
-        .forEach((t) => t.classList.remove("active"));
-      e.target.classList.add("active");
-
-      const infoDiv = document.getElementById(`${type}-trend-info`);
-      infoDiv.classList.remove("show");
-      setTimeout(() => {
-        infoDiv.innerHTML = `<h4>${trend.name}</h4><p>${trend.description}</p>`;
-        infoDiv.classList.add("show");
-      }, 200);
-    });
-  }
-
   hideLoader() {
     gsap.to(".loader-progress", {
       width: "100%",
@@ -738,24 +647,13 @@ class UIManager {
   }
 
   setupForm() {
-    document
-      .getElementById("contact-form")
-      ?.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const btn = e.target.querySelector("button");
-        const original = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        btn.disabled = true;
-        await new Promise((r) => setTimeout(r, 1500));
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        btn.style.background = "linear-gradient(135deg, #10b981, #059669)";
-        e.target.reset();
-        setTimeout(() => {
-          btn.innerHTML = original;
-          btn.disabled = false;
-          btn.style.background = "";
-        }, 3000);
-      });
+    // Formspree handles submission - just add visual feedback
+    const form = document.getElementById("contact-form");
+    form?.addEventListener("submit", () => {
+      const btn = form.querySelector("button");
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      btn.disabled = true;
+    });
   }
 
   setupScrollAnimations() {
@@ -775,7 +673,9 @@ class UIManager {
   }
 }
 
-// Initialize
+// ============================================
+// 🚀 INITIALIZE
+// ============================================
 document.addEventListener("DOMContentLoaded", () => {
   const scene3D = new Scene3D();
   const ui = new UIManager(scene3D);

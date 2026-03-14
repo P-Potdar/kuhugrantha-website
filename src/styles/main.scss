@@ -1,5 +1,5 @@
 // ============================================
-// ✅ ALL VARIABLES DEFINED HERE - No imports needed
+// ✅ ALL VARIABLES DEFINED - No imports needed
 // ============================================
 
 // Colors - Primary Palette
@@ -46,14 +46,13 @@ $bp-desktop: 1024px;
 $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 // ============================================
-// ✅ RESET & BASE STYLES
+// ✅ RESET & BASE
 // ============================================
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -84,7 +83,7 @@ body {
 }
 
 // ============================================
-// ✅ SCROLL PROGRESS BAR
+// ✅ SCROLL PROGRESS & PARTICLES
 // ============================================
 .scroll-progress {
   position: fixed;
@@ -97,9 +96,6 @@ body {
   transition: width 0.1s ease;
 }
 
-// ============================================
-// ✅ PARTICLES
-// ============================================
 .particles {
   position: fixed;
   inset: 0;
@@ -124,9 +120,7 @@ body {
     transform: translateY(0) translateX(0);
     opacity: 0;
   }
-  10% {
-    opacity: 0.3;
-  }
+  10%,
   90% {
     opacity: 0.3;
   }
@@ -165,7 +159,6 @@ body {
   bottom: 30px;
   opacity: 0;
   visibility: hidden;
-
   &.visible {
     opacity: 1;
     visibility: visible;
@@ -195,7 +188,6 @@ body {
     opacity: 0;
     pointer-events: none;
   }
-
   &-content {
     text-align: center;
     color: white;
@@ -245,7 +237,7 @@ body {
 }
 
 // ============================================
-// ✅ NAVIGATION
+// ✅ NAVIGATION - Logo Left, Menu Right
 // ============================================
 .navbar {
   position: fixed;
@@ -268,6 +260,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $space-4;
   }
 }
 
@@ -276,18 +272,25 @@ body {
   align-items: center;
   gap: $space-3;
   text-decoration: none;
+  flex-shrink: 0;
 
   &-img {
-    height: 48px;
+    height: 50px;
     width: auto;
     transition: transform 0.3s ease;
     &:hover {
-      transform: scale(1.05) rotate(2deg);
+      transform: scale(1.05);
     }
   }
 
+  &-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
   &-text {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 800;
     background: linear-gradient(
       135deg,
@@ -297,12 +300,21 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  &-subtext {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $color-text-light;
+    letter-spacing: 0.5px;
+  }
 }
 
 .nav-links {
   display: flex;
-  gap: $space-8;
+  gap: $space-6;
   list-style: none;
+  align-items: center;
+  margin-left: auto; // Push to right
 
   @media (max-width: $bp-tablet) {
     display: none;
@@ -755,147 +767,6 @@ body {
     filter: grayscale(100%) brightness(1.3);
     &:hover {
       filter: grayscale(0%) brightness(1);
-    }
-  }
-}
-
-// ============================================
-// ✅ TESTIMONIALS
-// ============================================
-.testimonials {
-  background: linear-gradient(180deg, $color-bg-alt 0%, white 100%);
-}
-
-.testimonials-slider {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: $space-4 0;
-}
-
-.testimonials-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.testimonial-card {
-  min-width: 100%;
-  padding: $space-6;
-  @media (min-width: $bp-tablet) {
-    min-width: 50%;
-    padding: $space-4;
-  }
-  @media (min-width: $bp-desktop) {
-    min-width: 33.333%;
-    padding: $space-4;
-  }
-}
-
-.testimonial-content {
-  background: white;
-  padding: $space-6;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  height: 100%;
-  transition: $transition;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
-  }
-
-  .testimonial-text {
-    font-size: 1rem;
-    color: $color-text;
-    line-height: 1.7;
-    margin-bottom: $space-4;
-    font-style: italic;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: $space-3;
-
-    .author-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, $color-secondary, $color-accent);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    .author-info {
-      h4 {
-        font-size: 1rem;
-        font-weight: 700;
-        color: $color-primary;
-        margin-bottom: 2px;
-      }
-      span {
-        font-size: 0.875rem;
-        color: $color-text-light;
-      }
-    }
-  }
-}
-
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid $color-border;
-  color: $color-secondary;
-  cursor: pointer;
-  z-index: 10;
-  transition: $transition;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-
-  &:hover {
-    background: linear-gradient(135deg, $color-secondary, $color-accent);
-    color: white;
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  &.prev {
-    left: 0;
-  }
-  &.next {
-    right: 0;
-  }
-}
-
-.slider-dots {
-  display: flex;
-  justify-content: center;
-  gap: $space-2;
-  margin-top: $space-6;
-
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: $color-border;
-    cursor: pointer;
-    transition: $transition;
-
-    &.active {
-      background: linear-gradient(135deg, $color-secondary, $color-accent);
-      width: 30px;
-      border-radius: 6px;
     }
   }
 }

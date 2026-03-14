@@ -18,14 +18,14 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
       },
     },
+    // Increase chunk size warning limit for Three.js
+    chunkSizeWarningLimit: 1000,
   },
 
   server: {
     port: 3000,
     open: true,
-    hmr: {
-      overlay: true,
-    },
+    hmr: { overlay: true },
   },
 
   css: {
